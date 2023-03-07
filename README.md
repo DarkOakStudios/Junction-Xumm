@@ -30,7 +30,7 @@ To install the Junction-Xumm server, simply run
 
 `npm install` 
 
-to install all the necessary dependencies.
+to install all the necessary dependencies. (If you're using the "/claim/offer" endpoint, you need to add your database checks if necessary) 
 
 ## Usage
 
