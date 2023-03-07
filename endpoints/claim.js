@@ -60,8 +60,7 @@ async function claim(tokenID, uuid) {
             const result_offer = await client.submit(signed_offer.tx_blob)
             if (!result_offer.result.engine_result == "tesSUCCESS") { 
                 // If offer doesn't go through, return this
-                console.log("Didn't work")
-                return
+                return "Error in offer creation"
             }
             // Get the offer ID of the offer that was just created
             let claimSellOffer;
