@@ -39,6 +39,7 @@ The following endpoints are available on the Junction-Xumm server:
 - /nfts(POST): This endpoint retrieves a list of the user's NFTs. It requires the account parameter in the headers, and an optional list of issuers in the body.
 
 	Headers: `account: [ACCOUNT]`
+	
 	Body(optional): `{ issuers: [ISSUERS] }`
 - /claim/easy(POST): This endpoint allows users to claim a specific NFT, provided the offer for the tokenID is already created and they own the corresponding token ID. It requires a uuid parameter in the body, as well as issuer and tokenID parameters to specify the NFT to claim.
 
