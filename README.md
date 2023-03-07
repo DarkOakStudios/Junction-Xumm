@@ -8,9 +8,9 @@ Junction-Xumm is a repository that provides a node server with several endpoints
 
 - NFTs: This endpoint retrieves a list of the user's NFTs.
 
-= Claim: This endpoint allows users to claim a specific NFT, provided they own the corresponding token ID.
+- Claim: This endpoint allows users to claim a specific NFT, provided they own the corresponding token ID.
 
-= Sign: This endpoint signs a transaction using the user's Xumm credentials and returns the signed transaction.
+- Sign: This endpoint signs a transaction using the user's Xumm credentials and returns the signed transaction.
 
 - Logout: This endpoint logs the user out of the server.
 
