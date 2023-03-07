@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const xrpl = require("xrpl");
 const sign = require("./endpoints/sign")
 const claim = require("./endpoints/claim")
-const getNFTs = require("./endpoints/nfts") 
+const getNFTs = require("./endpoints/nfts")
+const claimEZ = require("./endpoints/claimEZ") 
 
 require("dotenv").config({
   path: ".env",
@@ -86,9 +87,15 @@ app.post("/sign", async (req, res) => {
     return signQR 
 });
 
-app.post("/claim", async (req, res) => {
+app.post("/claim/easy", async (req, res) => {
     const { uuid, issuer, tid } = req.body;
-    const claimQR = await claim(uuid, issuer, tid);
+    const claimQR = await claimEZ(uuid, issuer, tid);
+    return claimQR
+});
+
+app.post("/claim/offer", async (req, res) => {
+    const { uuid, tid } = req.body;
+    const claimQR = await claim(uuid, tid);
     return claimQR
 });
 

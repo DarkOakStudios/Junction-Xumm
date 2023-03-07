@@ -8,7 +8,7 @@ const sign = require("./sign")
 
 
 
-async function claim(uuid, issuer, tid) {
+async function claimEZ(uuid, issuer, tid) {
 	const { data: { data: { response: { account }, application: { issued_user_token } } } } = await axios.get(`http://localhost:5000/payload/${uuid}`);
     const { data: { data: { offers } } } = await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/offerowner/${issuer}`)
     const claims = offers.find(offer => offer.Destination === account && item.NFTokenID === tid);
@@ -19,4 +19,4 @@ async function claim(uuid, issuer, tid) {
     return signQR
 };
 
-module.exports = claim;
+module.exports = claimEZ;
