@@ -20,9 +20,7 @@ By using the Junction-Xumm repository, developers can easily add Xumm authentica
 
 - Installation
 - Usage
-- API Reference
-- Contributing
-- License
+- Endpoints
 
 ## Installation
 
