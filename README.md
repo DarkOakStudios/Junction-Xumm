@@ -26,13 +26,18 @@ By using the Junction-Xumm repository, developers can easily add Xumm authentica
 
 ## Installation
 
-To install the Junction-Xumm server, simply run npm install to install all the necessary dependencies.
+To install the Junction-Xumm server, simply run 
+
+`npm install` 
+
+to install all the necessary dependencies.
 
 ## Usage
 
 1. Before running the server, you'll need to add your Xumm credentials to the .env file.
-2. Once your credentials are added, start the server by running npm start.
-3. The server will start listening on port 5000 by default. To connect to the server, send requests to the appropriate endpoints.
+2. Once your credentials are added, start the server by running 
+`npm start`
+6. The server will start listening on port 5000 by default. To connect to the server, send requests to the appropriate endpoints.
 
 ## Endpoints
 
