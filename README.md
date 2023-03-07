@@ -37,13 +37,17 @@ The following endpoints are available on the Junction-Xumm server:
 - /payload(GET): This endpoint returns a unique payload for the user, which can be used to authenticate their account and perform various operations. It requires a uuid parameter in the query string.
 	`GET /payload?uuid=[UUID]`
 - /nfts(POST): This endpoint retrieves a list of the user's NFTs. It requires the account parameter in the headers, and an optional list of issuers in the body.
-	Headers: account: [ACCOUNT]
-	Body(optional): { issuers: [ISSUERS] }
+
+	Headers: `account: [ACCOUNT]`
+	Body(optional): `{ issuers: [ISSUERS] }`
 - /claim/easy(POST): This endpoint allows users to claim a specific NFT, provided the offer for the tokenID is already created and they own the corresponding token ID. It requires a uuid parameter in the body, as well as issuer and tokenID parameters to specify the NFT to claim.
+
 	Body: `{ uuid: [UUID], issuer: [ISSUER], tokenID: [TOKENID] }`
 - /claim/offer(POST): This endpoint allows users to claim a specific NFT, provided they own the corresponding token ID. This endpoint allows the offer for the claim to be created when it is called. It requires a uuid parameter in the body, as well as a tokenID parameter to specify the NFT to claim.
+
 	Body: `{ uuid: [UUID], tokenID: [TOKENID] }`
 - /sign(POST): This endpoint signs a transaction using the user's Xumm credentials and returns the signed transaction. It requires the account, tokenoffer, and user_token parameters in the headers.
+
 	Body: `{account: [ACCOUNT], tokenoffer: [TOKENOFFER], user_token: [USER_TOKEN]}`
 - /logout(DELETE): This endpoint logs the user out of the server. It requires a uuid parameter in the query string.
 
