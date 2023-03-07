@@ -1,3 +1,4 @@
+// Import necessary modules
 const { default: axios } = require("axios");
 const express = require("express");
 const cors = require("cors");
@@ -8,6 +9,7 @@ const claim = require("./endpoints/claim")
 const getNFTs = require("./endpoints/nfts")
 const claimEZ = require("./endpoints/claimEZ") 
 
+// Load environment variables
 require("dotenv").config({
   path: ".env",
 });
@@ -15,15 +17,18 @@ require("dotenv").config({
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
 
+// Create a new Express application
 const app = express();
 
 
-
+// Use necessary middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Define routes and their handlers
 
+// Generate a sign in payload and return the necessary information for signing using the XUMM app
 app.get("/login", async (req, res) => {
   console.log(new Date().toString(), "login call");
   try {
@@ -57,6 +62,7 @@ app.get("/login", async (req, res) => {
   }
 });
 
+// Get the payload associated with the given UUID and return its data
 app.get("/payload/:payload_uuid", async (req, res) => {
   console.log(new Date().toString(), "payload call");
   try {
@@ -81,25 +87,28 @@ app.get("/payload/:payload_uuid", async (req, res) => {
   }
 });
 
+// Sign a token offer using the provided user token and return the signed offer
 app.post("/sign", async (req, res) => {
     const { account, offer, user_token } = req.body;
     const signQR = await sign(account, offer, user_token);
     return signQR 
 });
 
+  // Claim a token using an easy method (i.e. by looking up the offers associated with issuer account
 app.post("/claim/easy", async (req, res) => {
     const { uuid, issuer, tid } = req.body;
     const claimQR = await claimEZ(uuid, issuer, tid);
     return claimQR
 });
 
+// Create an offer and Accept that offer using the TokenID and UUID
 app.post("/claim/offer", async (req, res) => {
     const { uuid, tid } = req.body;
     const claimQR = await claim(uuid, tid);
     return claimQR
 });
 
-
+// Get all NFTs associated with a given account and optionally a list of issuers
 app.post("/nfts", async (req, res) => {
     const account = req.headers["account"];
     const issuers = req.body.issuers;
@@ -107,6 +116,7 @@ app.post("/nfts", async (req, res) => {
     return res.json(nfts);
 });
 
+// Delete a sign in payload associated with the given UUID
 app.delete("/logout/:payload_uuid", async (req, res) => {
   console.log(new Date().toString(), "logout call");
   try {
@@ -133,7 +143,7 @@ app.delete("/logout/:payload_uuid", async (req, res) => {
   }
 });
 
-
+// Start the server and listen on port 5000
 const server = app.listen(5000, function () {
   console.log("Listening on port " + server.address().port);
 });
