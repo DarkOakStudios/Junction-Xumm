@@ -7,7 +7,8 @@ const xrpl = require("xrpl");
 const sign = require("./endpoints/sign")
 const claim = require("./endpoints/claim")
 const getNFTs = require("./endpoints/nfts")
-const claimEZ = require("./endpoints/claimEZ") 
+const claimEZ = require("./endpoints/claimEZ")
+const claimed = require("./endpoints/isClaimed") 
 
 // Load environment variables
 require("dotenv").config({
@@ -115,6 +116,14 @@ app.post("/nfts", async (req, res) => {
     const nfts = await getNFTs(account, issuers)
     return res.json(nfts);
 });
+
+app.get("/claimed", async(req, res) => {
+    const account = req.headers["account"];
+    const taxon = req.headers["taxon"];
+    const issuer = req.headers["issuer"];
+    const isClaimed = claimed(account, taxon, issuer, collection)
+    return res.json(isClaimed)
+    })
 
 // Delete a sign in payload associated with the given UUID
 app.delete("/logout/:payload_uuid", async (req, res) => {
