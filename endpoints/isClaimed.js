@@ -18,7 +18,7 @@ async function isClaimed(account, taxon, issuer) {
     // Iterate through the claimable NFTs and check if they have been claimed already
     for (let i = 0; i < claimableNFTs.length; i++) {
         // Look up the NFT in the database using its NFTokenID
-        var tid = // database where token-to-claims ID is 
+        var tid = "234872628738ytuytue87w"// database where token-to-claims ID is 
 
         // Check if the NFT has been claimed by the issuer account
         var result = issuer_nfts.find(item => item.NFTokenID === tid);

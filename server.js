@@ -7,7 +7,7 @@ const xrpl = require("xrpl");
 const sign = require("./endpoints/sign")
 const claim = require("./endpoints/claim")
 const getNFTs = require("./endpoints/nfts")
-const claimEZ = require("./endpoints/claimEZ")
+const claimEZ = require("./endpoints/ezclaim")
 const claimed = require("./endpoints/isClaimed") 
 
 // Load environment variables
@@ -92,21 +92,21 @@ app.get("/payload/:payload_uuid", async (req, res) => {
 app.post("/sign", async (req, res) => {
     const { account, offer, user_token } = req.body;
     const signQR = await sign(account, offer, user_token);
-    return signQR 
+    return res.json(signQR) 
 });
 
   // Claim a token using an easy method (i.e. by looking up the offers associated with issuer account
 app.post("/claim/easy", async (req, res) => {
     const { uuid, issuer, tid } = req.body;
     const claimQR = await claimEZ(uuid, issuer, tid);
-    return claimQR
+    return res.json(claimQR)
 });
 
 // Create an offer and Accept that offer using the TokenID and UUID
 app.post("/claim/offer", async (req, res) => {
     const { uuid, tid } = req.body;
     const claimQR = await claim(uuid, tid);
-    return claimQR
+    return res.json(claimQR)
 });
 
 // Get all NFTs associated with a given account and optionally a list of issuers
