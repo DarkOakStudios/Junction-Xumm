@@ -26,7 +26,7 @@ function CreateOffer(account, tokenID) {
 // Function for the issuer to create the offer and send a sign request to the user
 async function claim(tokenID, uuid) {
     // Get the user's XRP Ledger account and issued user token using the uuid
-	const { data: { data: { response: { account }, application: { issued_user_token } } } } = await axios.get(`http://localhost:5000/payload/${uuid}`);
+    const { data: { data: { response: { account }, application: { issued_user_token } } } } = await axios.get(`http://localhost:5000/payload/${uuid}`); //replace this with the IP of where you're running the node server
     const user_token = issued_user_token
     // Get the user's NFTs
     const { data: { data: { nfts } } } = await axios.get(
