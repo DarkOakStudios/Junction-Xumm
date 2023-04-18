@@ -1,3 +1,4 @@
+![Junction Logo](https://github.com/DarkOakStudios/Junction-Xumm/blob/main/doc-images/Junction-Logo.png?raw=true)
 # Junction-Xumm
 
 Junction-Xumm is a repository that provides a node server with several endpoints that allow developers to integrate Xumm authentication and NFT claims into their websites. The available endpoints include:
